@@ -13,20 +13,21 @@
 
 avl_t *avl_rec(int *array, size_t start, size_t end, avl_t *parent)
 {
-	size_t mid = 0;
-	avl_t *root = NULL;
+	avl_t *root;
+	binary_tree_t *node;
+	int mid = 0;
 
-	if (start > end)
-		return (NULL);
-	mid = (start + end) / 2;
-	root = binary_tree_node(parent, array[mid]);
-
-	if (root == NULL)
-		return (NULL);
-	root->left = avl_rec(array, start, mid - 1, root);
-	root->right = avl_rec(array, mid + 1, end, root);
-
-	return (root);
+	if (start <= end)
+	{
+		mid = (start + end) / 2;
+		node = binary_tree_node((binary_tree_t *)parent, array[mid]);
+		if (node == NULL)
+			return (NULL);
+		root = (avl_t *)node;
+		root->left = avl_rec(root, array, start, mid - 1);
+		root->right = avl_rec(root, array, mid + 1, end);
+	}
+	return (NULL);
 }
 
 
