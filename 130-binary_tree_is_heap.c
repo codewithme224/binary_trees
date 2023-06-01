@@ -121,13 +121,21 @@ int binary_tree_is_heap(const binary_tree_t *tree)
 	int balance;
 
 	if (tree == NULL)
+	{
 		return (0);
+	}
 	if (tree->left && tree->left->n > tree->n)
+	{
 		return (0);
+	}
 	if (tree->right && tree->right->n > tree->n)
+	{
 		return (0);
+	}
 	if (binary_tree_is_perfect(tree))
+	{
 		return (1);
+	}
 
 	balance = binary_tree_balance(tree);
 
