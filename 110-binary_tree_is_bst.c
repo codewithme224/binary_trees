@@ -2,7 +2,7 @@
 #include "limits.h"
 
 /**
- * binary_tree_is_bst_func - checks if a binary tree is
+ * bst_helper - checks if a binary tree is
  *                           a valid Binary Search Tree
  * @tree: pointer to the root node of the tree to check
  * @min: minimum value
