@@ -11,23 +11,27 @@
  *         or NULL on failure
  */
 
-avl_t *avl_rec(avl_t *parent, int *array, int start, int end)
+avl_t *avl_rec(int *array, int start, int end)
 {
 	avl_t *root;
-	binary_tree_t *node;
-	int mid = 0;
+	int mid;
 
-	if (start <= end)
-	{
-		mid = (start + end) / 2;
-		node = binary_tree_node((binary_tree_t *)parent, array[mid]);
-		if (node == NULL)
-			return (NULL);
-		root = (avl_t *)node;
-		root->left = avl_rec(root, array, start, mid - 1);
-		root->right = avl_rec(root, array, mid + 1, end);
-	}
-	return (NULL);
+	if (end < start)
+		return (NULL);
+	
+	mid = (start + end) / 2;
+	root = binary_tree_node(NULL, array[mid]);
+
+	if (!root)
+		return (NULL);
+	root->left = avl_rec(array, start, mid - 1);
+	root->right = avl_rec(array, mid + 1, end);
+
+	if (root->left)
+		root->left->parent = root;
+	if (root->right)
+		root->right->parent = root;
+	return (root);
 }
 
 
@@ -42,7 +46,9 @@ avl_t *avl_rec(avl_t *parent, int *array, int start, int end)
 
 avl_t *sorted_array_to_avl(int *array, size_t size)
 {
-	if (array == NULL || size == 0)
+	if (!array || size < 1)
 		return (NULL);
-	return (avl_rec(NULL, array, 0, ((int)(size)) - 1));
+
+	return (avl_rec(array, 0, size - 1));
+
 }
