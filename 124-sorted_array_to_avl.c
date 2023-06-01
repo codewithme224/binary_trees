@@ -11,7 +11,7 @@
  *         or NULL on failure
  */
 
-avl_t *avl_rec(int *array, size_t start, size_t end, avl_t *parent)
+avl_t *avl_rec(avl_t *parent, int *array, int start, int end)
 {
 	avl_t *root;
 	binary_tree_t *node;
@@ -42,11 +42,7 @@ avl_t *avl_rec(int *array, size_t start, size_t end, avl_t *parent)
 
 avl_t *sorted_array_to_avl(int *array, size_t size)
 {
-	avl_t *tree = NULL;
-
 	if (array == NULL || size == 0)
 		return (NULL);
-	tree = avl_rec(array, 0, size - 1, NULL);
-
-	return (tree);
+	return (avl_rec(NULL, array, 0, ((int)(size)) - 1));
 }
