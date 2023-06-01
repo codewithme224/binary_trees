@@ -5,7 +5,6 @@
  * @array: A pointer to the first element of the array to be converted.
  * @start: The starting index of @array.
  * @end: The ending index of @array.
- * @parent: A pointer to the parent node.
  *
  * Return: A pointer to the root node of the created AVL tree,
  *         or NULL on failure
@@ -18,7 +17,7 @@ avl_t *avl_rec(int *array, int start, int end)
 
 	if (end < start)
 		return (NULL);
-	
+
 	mid = (start + end) / 2;
 	root = binary_tree_node(NULL, array[mid]);
 
