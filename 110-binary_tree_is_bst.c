@@ -2,7 +2,7 @@
 #include "limits.h"
 
 /**
- * binary_tree_is_bst_func - checks if a binary tree is 
+ * binary_tree_is_bst_func - checks if a binary tree is
  *                           a valid Binary Search Tree
  * @tree: pointer to the root node of the tree to check
  * @min: minimum value
@@ -19,12 +19,12 @@ int bst_helper(const binary_tree_t *tree, int min, int max)
 	if (tree->n < min || tree->n > max)
 		return (0);
 
-	return (bst_helper(tree->left, min, tree->n - 1) && 
+	return (bst_helper(tree->left, min, tree->n - 1) &&
 			bst_helper(tree->right, tree->n + 1, max));
 }
 
 /**
- * binary_tree_is_bst - checks if a binary tree is a 
+ * binary_tree_is_bst - checks if a binary tree is a
  *                      valid Binary Search Tree
  * @tree: pointer to the root node of the tree to check
  *
