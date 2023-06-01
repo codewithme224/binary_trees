@@ -22,7 +22,7 @@ bst_t *inorder_successor(bst_t *root)
  */
 bst_t *bst_delete(bst_t *root, bst_t *node)
 {
-	bst_t *parent = node->parent, *successor = NULL;
+	bst_t *parent = node->parent, *successor_node = NULL;
 
 	if (node->left == NULL)
 	{
@@ -88,5 +88,4 @@ bst_t *bst_remove_recursive(bst_t *root, bst_t *node, int value)
 bst_t *bst_remove(bst_t *root, int value)
 {
 	return (bst_remove_recursive(root, root, value));
-}
 }
