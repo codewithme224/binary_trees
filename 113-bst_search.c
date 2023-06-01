@@ -5,7 +5,7 @@
  * @tree: pointer to the root node of the BST to search
  * @value: value to search in the tree
  *
- * Return: pointer to the node containing a value equals 
+ * Return: pointer to the node containing a value equals
  *         to value, or NULL on failure
  */
 
