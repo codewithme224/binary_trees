@@ -8,21 +8,21 @@
  */
 size_t tree_height(const heap_t *tree)
 {
-	size_t height_l = 0;
-	size_t height_r = 0;
+	size_t l_height = 0;
+	size_t r_height = 0;
 
 	if (!tree)
 		return (0);
 
 	if (tree->left)
-		height_l = 1 + tree_height(tree->left);
+		l_height = 1 + tree_height(tree->left);
 
 	if (tree->right)
-		height_r = 1 + tree_height(tree->right);
+		r_height = 1 + tree_height(tree->right);
 
-	if (height_l > height_r)
-		return (height_l);
-	return (height_r);
+	if (l_height > r_height)
+		return (l_height);
+	return (r_height);
 }
 /**
  * tree_size_h - measures the sum of heights of a binary tree
@@ -32,19 +32,19 @@ size_t tree_height(const heap_t *tree)
  */
 size_t tree_size_h(const binary_tree_t *tree)
 {
-	size_t height_l = 0;
-	size_t height_r = 0;
+	size_t l_height = 0;
+	size_t r_height = 0;
 
 	if (!tree)
 		return (0);
 
 	if (tree->left)
-		height_l = 1 + tree_size_h(tree->left);
+		l_height = 1 + tree_size_h(tree->left);
 
 	if (tree->right)
-		height_r = 1 + tree_size_h(tree->right);
+		r_height = 1 + tree_size_h(tree->right);
 
-	return (height_l + height_r);
+	return (l_height + r_height);
 }
 
 /**
@@ -75,32 +75,32 @@ void _preorder(heap_t *tree, heap_t **node, size_t height)
 void heapify(heap_t *root)
 {
 	int value;
-	heap_t *tmp1, *tmp2;
+	heap_t *temp1, *temp2;
 
 	if (!root)
 		return;
 
-	tmp1 = root;
+	temp1 = root;
 
 	while (1)
 	{
-		if (!tmp1->left)
+		if (!temp1->left)
 			break;
-		if (!tmp1->right)
-			tmp2 = tmp1->left;
+		if (!temp1->right)
+			temp2 = temp1->left;
 		else
 		{
-			if (tmp1->left->n > tmp1->right->n)
-				tmp2 = tmp1->left;
+			if (temp1->left->n > temp1->right->n)
+				temp2 = temp1->left;
 			else
-				tmp2 = tmp1->right;
+				temp2 = temp1->right;
 		}
-		if (tmp1->n > tmp2->n)
+		if (temp1->n > temp2->n)
 			break;
-		value = tmp1->n;
-		tmp1->n = tmp2->n;
-		tmp2->n = value;
-		tmp1 = tmp2;
+		value = temp1->n;
+		temp1->n = temp2->n;
+		temp2->n = value;
+		temp1 = temp2;
 	}
 }
 
